@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiarma-Treasurer dashboard</title>
+  <link rel="stylesheet" href="dashboard.css" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+        <img src="../images/logo.jpg" width="40" height="40" class="logo-icon" />
+      <span>KIA-RMA</span>
+    </div>
+    
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item active">
+         <i class="fas fa-home"></i>
+        Dashboard
+      </a>
+      <a href="contributions.html" class="nav-item">
+        <i class="fas fa-coins"></i>
+        Contributions
+      </a>
+      <a href="members.html" class="nav-item">
+       <i class="fas fa-users"></i>
+        Members
+      </a>
+      
+      <a href="loans.html" class="nav-item">
+        <i class="fas fa-hands-helping"></i>
+        Loans
+      </a>
+      <a href="profile.html" class="nav-item">
+        <i class="fas fa-user"></i>
+        Profile
+      </a>
+
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="logout()">🚪 Logout</button>
+    </div>
+    
+  </div>
+
+  <!-- main content could go here -->
+<div class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <div class="topbar-left">
+        <h1 class="page-title">Dashboard</h1>
+      </div>
+      <div class="topbar-right">
+        <span class="group-label">📋 Ndegwa's Group</span>
+        <div class="topbar-avatar" id="topbar-avatar">NG</div>
+      </div>
+    </div>
+
+     <!-- CONTENT -->
+    <div class="content">
+
+      <div class="welcome-text">
+        Welcome back, <span id="user-name">Kelly</span>!
+      </div>
+
+      <!-- STAT CARDS -->
+      <div class="stats-grid">
+
+        <div class="stat-card blue">
+          <div class="stat-label">Total Group Savings</div>
+          <div class="stat-value" id="total-savings">Ksh 0</div>
+          <div class="mini-bars" id="savings-bars"></div>
+        </div>
+
+        <div class="stat-card teal">
+          <div class="stat-label">Your Contribution</div>
+          <div class="stat-value" id="your-contribution">Ksh 0</div>
+          <div class="mini-bars" id="contrib-bars"></div>
+        </div>
+
+        <div class="stat-card violet">
+          <div class="stat-label">Total Members</div>
+          <div class="stat-value dark" id="total-members">0</div>
+          <div class="stat-sub">Active in group</div>
+        </div>
+
+        <div class="stat-card aqua">
+          <div class="stat-label">Pending Payments</div>
+          <div class="stat-value dark" id="pending-count">0</div>
+          <div class="stat-sub">Awaiting payment</div>
+        </div>
+      
+        <!-- ROW 2 -->
+      <div class="two-col-row">
+
+        <!-- UPCOMING PAYMENTS -->
+        <div class="card">
+          <div class="card-title">Upcoming Payments</div>
+          <div id="upcoming-list"></div>
+        </div>
+
+       
+
+      <!-- RECENT ACTIVITY -->
+      <div class="card">
+        <div class="card-title">Recent Activity</div>
+        <div id="activity-list"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/contributions.js"></script>
+
+</body>
+</html>

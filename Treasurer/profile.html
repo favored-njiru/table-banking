@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kiarma — Profile</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon"></div>
+      <span>Kiarma</span>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="dashboard.html" class="nav-item">
+        <span class="nav-icon">🏠</span> Dashboard
+      </a>
+      <a href="contributions.html" class="nav-item">
+        <span class="nav-icon">💳</span> Contributions
+      </a>
+      <a href="members.html" class="nav-item">
+        <span class="nav-icon">👥</span> Members
+      </a>
+      <a href="loans.html" class="nav-item">
+        <span class="nav-icon">💰</span> Loans
+      </a>
+      <a href="profile.html" class="nav-item active">
+        <span class="nav-icon">👤</span> Profile
+      </a>
+    </nav>
+    <div class="sidebar-bottom">
+      <button class="btn-logout" onclick="logout()">🚪 Logout</button>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <h1 class="page-title">My Profile</h1>
+      <div class="topbar-right">
+        <span class="group-label">📋 Ndegwa's Group</span>
+        <div class="topbar-avatar" id="topbar-avatar">NG</div>
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <div class="profile-layout">
+
+        <!-- LEFT COLUMN -->
+        <div class="profile-left">
+
+          <!-- PROFILE CARD -->
+          <div class="card profile-card">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar-big"
+                   id="profile-avatar-big">KN</div>
+              <div class="profile-avatar-badge">Treasurer</div>
+            </div>
+            <div class="profile-name"
+                 id="profile-name">Kelly Ndegwa</div>
+            <div class="profile-email"
+                 id="profile-email">kelly@gmail.com</div>
+            <div class="profile-joined">
+              📅 Joined: Jan 2026
+            </div>
+
+            <div class="profile-stats-row">
+              <div class="profile-stat">
+                <div class="profile-stat-val"
+                     id="ps-contributions">0</div>
+                <div class="profile-stat-label">Contributions</div>
+              </div>
+              <div class="profile-stat-divider"></div>
+              <div class="profile-stat">
+                <div class="profile-stat-val"
+                     id="ps-total-paid">Ksh0</div>
+                <div class="profile-stat-label">Total Paid</div>
+              </div>
+              <div class="profile-stat-divider"></div>
+              <div class="profile-stat">
+                <div class="profile-stat-val"
+                     id="ps-members">0</div>
+                <div class="profile-stat-label">Members</div>
+              </div>
+            </div>
+
+            <button class="btn-primary"
+                    style="width:100%; margin-top:20px;"
+                    onclick="openEditProfile()">
+              ✏️ Edit Profile
+            </button>
+          </div>
+
+          <!-- MY GROUPS CARD -->
+          <div class="card" style="margin-top:16px;">
+            <div class="card-title">My Groups</div>
+            <div class="group-item">
+              <div class="group-icon-wrap">💼</div>
+              <div>
+                <div class="group-item-name">Ndegwa's Group</div>
+                <div class="group-item-role">Treasurer</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="profile-right">
+
+          <!-- CONTRIBUTION SUMMARY -->
+          <div class="card">
+            <div class="card-title">Contribution Summary</div>
+            <div class="summary-row">
+              <div class="summary-left">
+                <span class="summary-dot green"></span>
+                Total Contributed
+              </div>
+              <div class="summary-val"
+                   id="sum-total">Ksh0</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-left">
+                <span class="summary-dot green"></span>
+                Payments Made
+              </div>
+              <div class="summary-val"
+                   id="sum-payments">0</div>
+            </div>
+            <div class="summary-row">
+              <div class="summary-left">
+                <span class="summary-dot amber"></span>
+                Pending Amount
+              </div>
+              <div class="summary-val"
+                   style="color:#f59e0b;"
+                   id="sum-pending">Ksh0</div>
+            </div>
+            <div class="summary-row"
+                 style="border-bottom:none;">
+              <div class="summary-left">
+                <span class="summary-dot red"></span>
+                Next Payment Due
+              </div>
+              <div class="summary-val"
+                   style="color:#ef4444;"
+                   id="sum-next-due">—</div>
+            </div>
+          </div>
+
+          <!-- RECENT CONTRIBUTIONS -->
+          <div class="card" style="margin-top:16px;">
+            <div class="card-title">My Recent Contributions</div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Due Date</th>
+                  </tr>
+                </thead>
+                <tbody id="my-contributions-body"></tbody>
+              </table>
+            </div>
+            <div id="no-contributions"
+                 style="display:none; text-align:center;
+                        padding:24px; color:#9ca3af;
+                        font-size:13px;">
+              No contributions yet.
+            </div>
+          </div>
+
+          <!-- CHANGE PASSWORD -->
+          <div class="card" style="margin-top:16px;">
+            <div class="card-title">Change Password</div>
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password"
+                     id="current-pw"
+                     placeholder="Enter current password" />
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password"
+                     id="new-pw"
+                     placeholder="Enter new password" />
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password"
+                     id="confirm-pw"
+                     placeholder="Repeat new password" />
+            </div>
+            <div class="form-error"
+                 id="pw-error"></div>
+            <div class="form-success"
+                 id="pw-success"></div>
+            <button class="btn-primary"
+                    onclick="changePassword()">
+              Update Password
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EDIT PROFILE MODAL -->
+  <div class="modal-overlay"
+       id="edit-overlay"
+       onclick="closeEditProfile()"></div>
+
+  <div class="modal" id="edit-modal">
+    <div class="modal-header">
+      <div class="modal-title">Edit Profile</div>
+      <button class="modal-close"
+              onclick="closeEditProfile()">✕</button>
+    </div>
+    <div class="form-group">
+      <label>Full Name</label>
+      <input type="text" id="edit-name" />
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" id="edit-email" />
+    </div>
+    <div class="form-error" id="edit-error"></div>
+    <div style="display:flex; gap:10px; margin-top:6px;">
+      <button class="btn-secondary"
+              onclick="closeEditProfile()">Cancel</button>
+      <button class="btn-primary"
+              style="flex:1;"
+              onclick="saveProfile()">Save Changes</button>
+    </div>
+  </div>
+
+  <script src="../js/data.js"></script>
+  <script src="auth.js"></script>
+  <script src="../js/profile.js"></script>
+
+</body>
+</html>
